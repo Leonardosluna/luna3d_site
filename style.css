@@ -397,3 +397,35 @@ footer {
     box-shadow: 0 0 10px rgba(254, 44, 85, 0.6);
     transform: translateY(-2px);
 }
+
+/* === AJUSTES PARA CELULAR (RESPONSIVIDADE) === */
+@media (max-width: 768px) {
+    
+    /* 1. Ajusta o Cabeçalho para ficar mais compacto */
+    header {
+        flex-direction: column; /* Coloca logo em cima e menu embaixo */
+        padding: 1rem;
+        gap: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap; /* Permite que os botões quebrem de linha sem bugar */
+        justify-content: center; /* Centraliza os botões */
+        gap: 10px; /* Diminui o espaço entre eles */
+    }
+
+    /* 2. Diminui o Banner para não ocupar a tela toda */
+    .hero {
+        padding: 80px 20px; /* Reduz de 150px para 80px */
+    }
+
+    .hero h1 {
+        font-size: 2rem; /* Diminui a fonte do título */
+    }
+
+    /* 3. Ajusta os botões de filtro para ficarem mais fáceis de clicar */
+    .btn-filtro {
+        flex-grow: 1; /* Faz o botão esticar para preencher espaços vazios */
+        margin-bottom: 5px;
+    }
+}
