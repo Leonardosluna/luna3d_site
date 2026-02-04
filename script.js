@@ -1,4 +1,4 @@
-// 1. Função para rolar suavemente até a vitrine (usada na Home)
+// 1. Função para rolar suavemente até a vitrine (Home)
 function rolarParaProdutos() {
     const sectionProdutos = document.getElementById('produtos');
     if (sectionProdutos) {
@@ -6,57 +6,84 @@ function rolarParaProdutos() {
     }
 }
 
-// 2. Função de Filtro (Nova!)
+// 2. Função de Filtro de Categorias
 function filtrar(categoria) {
-    // A. Atualiza o visual dos botões (muda a cor do ativo)
     const botoes = document.querySelectorAll('.btn-filtro');
+    
+    // Atualiza visual dos botões
     botoes.forEach(btn => {
         btn.classList.remove('ativo');
-        
-        // Verifica se este é o botão clicado para deixá-lo colorido
         if(btn.getAttribute('onclick').includes(categoria)) {
             btn.classList.add('ativo');
         }
     });
 
-    // B. Esconde ou mostra os produtos
+    // Mostra ou esconde produtos
     const produtos = document.querySelectorAll('.card-produto');
-
     produtos.forEach(produto => {
-        // Pega a etiqueta que colocamos no HTML (ex: data-categoria="decoracao")
         const categoriaProduto = produto.getAttribute('data-categoria');
-
         if (categoria === 'todos' || categoriaProduto === categoria) {
-            // Se for "todos" ou se a etiqueta bater, mostra o produto
             produto.style.display = 'block'; 
         } else {
-            // Se não, esconde
             produto.style.display = 'none'; 
         }
     });
 }
 
-// 3. Configuração dos botões "Tenho Interesse" (WhatsApp)
-// Usamos um evento que espera a página carregar para garantir que os botões existam
+// 3. Lógica do Modal de Compra
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // Pegamos todos os botões "Tenho Interesse" e elementos do modal
     const botoesComprar = document.querySelectorAll('.btn-comprar');
+    const modal = document.getElementById('modal-compra');
+    const tituloProdutoModal = document.getElementById('produto-titulo-modal');
+    const btnWhatsModal = document.getElementById('btn-whats-modal');
 
+    // Quando clicar em "Tenho Interesse"
     botoesComprar.forEach(botao => {
         botao.addEventListener('click', (event) => {
-            const card = event.target.parentElement;
-            const nomeProduto = card.querySelector('h3').innerText;
+            // Acha o cartão do produto (usando closest para maior segurança)
+            const card = botao.closest('.card-produto');
             
-            // Tenta pegar o preço, se não tiver, deixa vazio
+            // Pega os dados do produto
+            const nomeProduto = card.querySelector('h3').innerText;
             const precoElemento = card.querySelector('.preco');
             const preco = precoElemento ? precoElemento.innerText : '';
 
-            // === SEU NÚMERO AQUI ===
+            // 1. Atualiza o texto dentro do Modal
+            if (tituloProdutoModal) {
+                tituloProdutoModal.innerText = `${nomeProduto} - ${preco}`;
+            }
+
+            // 2. Prepara o Link do WhatsApp Específico
+            // === IMPORTANTE: INSIRA SEU NÚMERO REAL ABAIXO (apenas números) ===
             const seuNumero = "5524999999999"; 
+            
+            const mensagem = `Olá! Vi o *${nomeProduto}* ${preco} no site Luna3D e gostaria de negociar.`;
+            
+            if (btnWhatsModal) {
+                btnWhatsModal.href = `https://wa.me/${seuNumero}?text=${encodeURIComponent(mensagem)}`;
+            }
 
-            const mensagem = `Olá! Vi o *${nomeProduto}* ${preco} no site Luna3D e tenho interesse.`;
-            const linkWhatsApp = `https://wa.me/${seuNumero}?text=${encodeURIComponent(mensagem)}`;
-
-            window.open(linkWhatsApp, '_blank');
+            // 3. Mostra o Modal
+            if (modal) {
+                modal.style.display = 'flex';
+            }
         });
     });
+
+    // Fechar o modal clicando fora dele (na parte escura)
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 });
+
+// Função para fechar clicando no X (precisa ser global)
+function fecharModal() {
+    const modal = document.getElementById('modal-compra');
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
