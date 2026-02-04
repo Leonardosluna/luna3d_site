@@ -4,24 +4,26 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif; /* Fonte mais geométrica */
+    box-sizing: border-box; /* ESSENCIAL: Garante que padding não estoure a largura */
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
-    background-color: #f9f9f9; /* Fundo claro para destacar o produto */
+    background-color: #f9f9f9;
     color: #333;
+    overflow-x: hidden; /* SEGURANÇA: Impede scroll horizontal indesejado */
+    width: 100%;
 }
 
 /* === CABEÇALHO === */
 header {
-    background-color: #1a1a1a; /* Preto quase grafite */
+    background-color: #1a1a1a;
     color: white;
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 3px solid #d4af37; /* Linha dourada na base do menu */
+    border-bottom: 3px solid #d4af37;
 }
 
 .logo-img {
@@ -38,7 +40,7 @@ header {
 nav ul {
     list-style: none;
     display: flex;
-    gap: 15px; /* Ajuste leve para caber todos os itens */
+    gap: 15px;
     align-items: center; 
 }
 
@@ -113,7 +115,6 @@ h2::after {
 
 .vitrine-grid {
     display: grid;
-    /* auto-FILL preenche com espaços vazios e não estica o card */
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
 }
@@ -173,16 +174,13 @@ h3 {
     color: #d4af37;
 }
 
-/* === BOTÃO DESTAQUE CATÁLOGO (NOVO) === */
+/* === BOTÃO DESTAQUE CATÁLOGO === */
 .btn-catalogo-destaque {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    
-    /* Degradê Dourado Premium */
     background: linear-gradient(90deg, #d4af37 0%, #f1c40f 100%);
     color: #1a1a1a; 
-    
     padding: 15px 35px;
     border-radius: 50px;
     font-size: 1.1rem;
@@ -190,8 +188,6 @@ h3 {
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 1px;
-    
-    /* Sombra Dourada (Glow) */
     box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
     transition: all 0.3s ease;
     border: 2px solid transparent; 
@@ -220,13 +216,11 @@ footer {
     border-top: 3px solid #d4af37;
 }
 
-/* === ESTILOS GERAIS DE BOTÕES (Header e Modal) === */
-
-/* Configuração Base para todos os botões destaque */
-.destaque-insta, .destaque-whatsapp, .destaque-ml, .destaque-shopee, .destaque-tiktok {
+/* === ESTILOS DE BOTÕES GERAIS === */
+.destaque-insta, .destaque-whatsapp, .destaque-ml, .destaque-shopee, .destaque-tiktok, .destaque-elo7 {
     display: inline-flex;
     align-items: center;
-    gap: 6px; /* Espaço entre ícone e texto */
+    gap: 6px;
     line-height: 1.2;
     padding: 5px 15px;
     border-radius: 20px;
@@ -235,270 +229,115 @@ footer {
     transition: all 0.3s;
 }
 
-/* -- Instagram -- */
-.destaque-insta {
-    border: 1px solid #E1306C;
-    color: #ffffff !important;
+/* Cores dos Botões */
+.destaque-insta { border: 1px solid #E1306C; color: #ffffff !important; }
+.destaque-insta:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white !important; border-color: transparent; box-shadow: 0 0 15px rgba(225, 48, 108, 0.5); transform: translateY(-2px); }
+
+.destaque-whatsapp { border: 1px solid #25D366; color: white !important; }
+.destaque-whatsapp:hover { background-color: #25D366; color: white !important; box-shadow: 0 0 10px rgba(37, 211, 102, 0.5); transform: translateY(-2px); }
+
+.destaque-ml { border: 1px solid #ffe600; color: #ffe600 !important; }
+.destaque-ml:hover { background-color: #ffe600; color: #2d3277 !important; box-shadow: 0 0 10px rgba(255, 230, 0, 0.6); transform: translateY(-2px); }
+
+.destaque-shopee { border: 1px solid #ee4d2d; color: #ee4d2d !important; }
+.destaque-shopee:hover { background-color: #ee4d2d; color: white !important; box-shadow: 0 0 10px rgba(238, 77, 45, 0.6); transform: translateY(-2px); }
+
+/* TikTok (ATUALIZADO PARA BRANCO E PRETO) */
+.destaque-tiktok { 
+    border: 1px solid #ffffff; 
+    color: #ffffff !important; 
 }
-.destaque-insta:hover {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-    color: white !important;
-    border-color: transparent;
-    box-shadow: 0 0 15px rgba(225, 48, 108, 0.5); 
-    transform: translateY(-2px);
+.destaque-tiktok:hover { 
+    background-color: #ffffff; 
+    color: #000000 !important; /* Texto Preto ao passar o mouse */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6); 
+    transform: translateY(-2px); 
 }
 
-/* -- WhatsApp -- */
-.destaque-whatsapp {
-    border: 1px solid #25D366;
-    color: white !important;
-}
-.destaque-whatsapp:hover {
-    background-color: #25D366;
-    color: white !important;
-    box-shadow: 0 0 10px rgba(37, 211, 102, 0.5);
-    transform: translateY(-2px);
-}
+/* Elo7 (Laranja e Branco) */
+.destaque-elo7 { border: 1px solid #FF7A00; color: #FF7A00 !important; }
+.destaque-elo7:hover { background-color: #FF7A00; color: white !important; box-shadow: 0 0 10px rgba(255, 122, 0, 0.6); transform: translateY(-2px); }
 
-/* -- Mercado Livre -- */
-.destaque-ml {
-    border: 1px solid #ffe600;
-    color: #ffe600 !important;
-}
-.destaque-ml:hover {
-    background-color: #ffe600;
-    color: #2d3277 !important;
-    box-shadow: 0 0 10px rgba(255, 230, 0, 0.6);
-    transform: translateY(-2px);
-}
+/* Social Footer */
+.social-area { margin-bottom: 20px; }
+.social-area p { margin-bottom: 10px; font-size: 0.9rem; color: #aaa; }
+.btn-insta-footer { text-decoration: none; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; display: inline-block; transition: transform 0.2s; }
+.btn-insta-footer:hover { transform: scale(1.05); opacity: 0.9; }
 
-/* -- Shopee -- */
-.destaque-shopee {
-    border: 1px solid #ee4d2d;
-    color: #ee4d2d !important;
-}
-.destaque-shopee:hover {
-    background-color: #ee4d2d;
-    color: white !important;
-    box-shadow: 0 0 10px rgba(238, 77, 45, 0.6);
-    transform: translateY(-2px);
-}
+/* Contato Section */
+.contato-container { background-color: #f4f4f4; text-align: center; padding: 60px 20px; border-top: 1px solid #ddd; }
+.contato-container h2 { color: #1a1a1a; margin-bottom: 10px; }
+.contato-container p { color: #666; margin-bottom: 5px; font-size: 1.1rem; }
+.btn-whatsapp-geral { display: inline-block; background-color: #25D366; color: white; text-decoration: none; font-weight: bold; font-size: 1.2rem; padding: 15px 30px; border-radius: 50px; margin-top: 25px; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); transition: transform 0.3s, box-shadow 0.3s; }
+.btn-whatsapp-geral:hover { background-color: #1ebe57; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(37, 211, 102, 0.6); }
 
-/* -- TikTok -- */
-.destaque-tiktok {
-    border: 1px solid #fe2c55;
-    color: #fe2c55 !important;
-}
-.destaque-tiktok:hover {
-    background-color: #fe2c55;
-    color: white !important;
-    box-shadow: 0 0 10px rgba(254, 44, 85, 0.6);
-    transform: translateY(-2px);
-}
+/* Filtros */
+.filtros-area { text-align: center; margin-bottom: 30px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.btn-filtro { padding: 8px 20px; border: 1px solid #d4af37; background-color: transparent; color: #1a1a1a; font-weight: bold; border-radius: 20px; cursor: pointer; transition: all 0.3s; font-family: 'Montserrat', sans-serif; }
+.btn-filtro:hover { background-color: #f1c40f; transform: translateY(-2px); }
+.btn-filtro.ativo { background-color: #d4af37; color: white; }
+
+/* === MODAL DE COMPRA === */
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 1000; justify-content: center; align-items: center; animation: fadeIn 0.3s; }
+.modal-content { background-color: rgb(51, 51, 51); padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; text-align: center; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 2px solid #d4af37; }
+.modal-content h3 { color: #d4af37 !important; }
+.modal-content p { color: #ccc !important; }
+.fechar-modal { position: absolute; top: 10px; right: 15px; font-size: 28px; font-weight: bold; color: #aaa; cursor: pointer; transition: color 0.2s; }
+.fechar-modal:hover { color: #d4af37; }
+.lista-botoes-modal { display: flex; flex-direction: column; gap: 15px; }
+.btn-modal { justify-content: center; padding: 12px; font-size: 1.1rem; }
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 
 
-/* Área Social do Rodapé */
-.social-area {
-    margin-bottom: 20px;
-}
-
-.social-area p {
-    margin-bottom: 10px;
-    font-size: 0.9rem;
-    color: #aaa;
-}
-
-/* Botão do Rodapé */
-.btn-insta-footer {
-    text-decoration: none;
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    display: inline-block;
-    transition: transform 0.2s;
-}
-
-.btn-insta-footer:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
-}
-
-/* === SEÇÃO DE CONTATO === */
-.contato-container {
-    background-color: #f4f4f4;
-    text-align: center;
-    padding: 60px 20px;
-    border-top: 1px solid #ddd;
-}
-
-.contato-container h2 {
-    color: #1a1a1a;
-    margin-bottom: 10px;
-}
-
-.contato-container p {
-    color: #666;
-    margin-bottom: 5px;
-    font-size: 1.1rem;
-}
-
-/* O Botão Verde (Rodapé) */
-.btn-whatsapp-geral {
-    display: inline-block;
-    background-color: #25D366;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2rem;
-    padding: 15px 30px;
-    border-radius: 50px;
-    margin-top: 25px;
-    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.btn-whatsapp-geral:hover {
-    background-color: #1ebe57;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(37, 211, 102, 0.6);
-}
-
-/* === FILTROS DE PRODUTOS === */
-.filtros-area {
-    text-align: center;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap; /* Para não quebrar no celular */
-}
-
-.btn-filtro {
-    padding: 8px 20px;
-    border: 1px solid #d4af37;
-    background-color: transparent;
-    color: #1a1a1a;
-    font-weight: bold;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.btn-filtro:hover {
-    background-color: #f1c40f;
-    transform: translateY(-2px);
-}
-
-/* Estilo para o botão que estiver selecionado */
-.btn-filtro.ativo {
-    background-color: #d4af37;
-    color: white;
-}
-
-/* === MODAL DE COMPRA (ESTILO GLOBAL) === */
-.modal-overlay {
-    display: none; /* Começa invisível */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Fundo preto transparente */
-    z-index: 1000; /* Fica por cima de tudo */
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 0.3s;
-}
-
-.modal-content {
-    background-color: rgb(51, 51, 51); /* Fundo Escuro */
-    padding: 30px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 400px; 
-    text-align: center;
-    position: relative;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    border: 2px solid #d4af37;
-}
-
-/* Ajuste de Texto para o Modal Escuro */
-.modal-content h3 {
-    color: #d4af37 !important; /* Título Dourado */
-}
-.modal-content p {
-    color: #ccc !important; /* Texto Cinza Claro */
-}
-
-/* Botão de Fechar (X) */
-.fechar-modal {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #aaa;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.fechar-modal:hover {
-    color: #d4af37;
-}
-
-/* Lista de Botões no Modal */
-.lista-botoes-modal {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* Ajuste nos botões para ficarem largos dentro do modal */
-.btn-modal {
-    justify-content: center; /* Centraliza texto e ícone */
-    padding: 12px;
-    font-size: 1.1rem;
-}
-
-/* Animação suave */
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-
-/* === AJUSTES PARA CELULAR (RESPONSIVIDADE) === */
-/* Atenção: Só coloque aqui o que for MUDAR no celular */
+/* === AJUSTES PARA CELULAR (LAYOUT BLINDADO COM ELO7) === */
 @media (max-width: 768px) {
     
-    /* 1. Ajusta o Cabeçalho para ficar mais compacto */
     header {
-        flex-direction: column; /* Coloca logo em cima e menu embaixo */
+        flex-direction: column;
         padding: 1rem;
-        gap: 15px;
+        gap: 20px;
+        width: 100%;
     }
+
+    nav { width: 100%; }
 
     nav ul {
-        flex-wrap: wrap; /* Permite que os botões quebrem de linha sem bugar */
-        justify-content: center; /* Centraliza os botões */
-        gap: 10px; /* Diminui o espaço entre eles */
+        display: grid;
+        /* Mapa atualizado: TikTok e Elo7 juntos na linha 3 */
+        grid-template-areas: 
+            "link1 link2"
+            "ml shopee"
+            "tiktok elo7"
+            "instagram instagram"
+            "contato contato";
+        grid-template-columns: 1fr 1fr; 
+        gap: 12px;
+        width: 100%;
+        padding: 0;
     }
 
-    /* 2. Diminui o Banner para não ocupar a tela toda */
-    .hero {
-        padding: 80px 20px; /* Reduz de 150px para 80px */
+    /* Mapeando os itens para o novo mapa */
+    nav ul li:nth-child(1) { grid-area: link1; display: flex; justify-content: center; border-bottom: 1px solid #333; padding-bottom: 8px; }
+    nav ul li:nth-child(2) { grid-area: link2; display: flex; justify-content: center; border-bottom: 1px solid #333; padding-bottom: 8px; }
+    
+    nav ul li:nth-child(3) { grid-area: ml; }       
+    nav ul li:nth-child(4) { grid-area: shopee; }   
+    nav ul li:nth-child(5) { grid-area: tiktok; }   
+    nav ul li:nth-child(6) { grid-area: elo7; } /* Elo7 (item 6) */
+    
+    /* Instagram e Contato nos itens 7 e 8 */
+    nav ul li:nth-child(7) { grid-area: instagram; } 
+    nav ul li:nth-child(8) { grid-area: contato; }   
+    
+    /* Garante que os botões ocupem 100% da célula */
+    .destaque-ml, .destaque-shopee, .destaque-tiktok, .destaque-insta, .destaque-whatsapp, .destaque-elo7 {
+        width: 100%; 
+        justify-content: center;
+        height: 45px;
+        font-size: 0.9rem;
+        white-space: nowrap; 
     }
 
-    .hero h1 {
-        font-size: 2rem; /* Diminui a fonte do título */
-    }
-
-    /* 3. Ajusta os botões de filtro para ficarem mais fáceis de clicar */
-    .btn-filtro {
-        flex-grow: 1; /* Faz o botão esticar para preencher espaços vazios */
-        margin-bottom: 5px;
-    }
+    .hero { padding: 60px 20px; }
+    .hero h1 { font-size: 2rem; }
 }
