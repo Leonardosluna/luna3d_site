@@ -1,3 +1,11 @@
+// Função para fechar a barra de aviso
+function fecharAviso() {
+    const aviso = document.getElementById('aviso-construcao');
+    if (aviso) {
+        aviso.style.display = 'none';
+    }
+}
+
 // 1. Função para rolar suavemente até a vitrine (Home)
 function rolarParaProdutos() {
     const sectionProdutos = document.getElementById('produtos');

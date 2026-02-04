@@ -15,6 +15,52 @@ body {
     width: 100%;
 }
 
+ /* === BARRA DE AVISO (Site em Construção) === */
+.top-bar-aviso {
+    background-color: #d4af37; /* Fundo Dourado para chamar atenção */
+    color: #1a1a1a; /* Texto Escuro para contraste */
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative; /* Para o botão X se posicionar */
+    z-index: 9999; /* Fica acima de tudo */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.top-bar-aviso strong {
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.fechar-aviso {
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
+    color: #1a1a1a;
+    transition: opacity 0.2s;
+    position: absolute;
+    right: 20px; /* Fica no canto direito */
+}
+
+.fechar-aviso:hover {
+    opacity: 0.6;
+}
+
+/* Ajuste para celular: texto menor e mais espaço */
+@media (max-width: 768px) {
+    .top-bar-aviso {
+        font-size: 0.8rem;
+        padding: 10px 35px 10px 15px; /* Espaço extra na direita pro X não ficar em cima do texto */
+        text-align: left;
+    }
+}
+
 /* === CABEÇALHO === */
 header {
     background-color: #1a1a1a;
@@ -340,4 +386,6 @@ footer {
 
     .hero { padding: 60px 20px; }
     .hero h1 { font-size: 2rem; }
+
+   
 }
