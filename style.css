@@ -4,32 +4,33 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* ESSENCIAL: Garante que padding não estoure a largura */
+    box-sizing: border-box; 
     font-family: 'Montserrat', sans-serif;
 }
 
 body {
     background-color: #f9f9f9;
     color: #333;
-    overflow-x: hidden; /* SEGURANÇA: Impede scroll horizontal indesejado */
+    overflow-x: hidden; 
     width: 100%;
 }
 
- /* === BARRA DE AVISO (Site em Construção) === */
+/* === BARRA DE AVISO (Site em Construção) === */
 .top-bar-aviso {
-    background-color: #d4af37; /* Fundo Dourado para chamar atenção */
-    color: #1a1a1a; /* Texto Escuro para contraste */
+    background-color: #d4af37 !important;
+    color: #1a1a1a !important;
     text-align: center;
-    padding: 10px 20px;
+    padding: 12px 20px;
     font-size: 0.95rem;
     font-weight: 500;
-    position: relative; /* Para o botão X se posicionar */
-    z-index: 9999; /* Fica acima de tudo */
+    position: relative;
+    z-index: 9999;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
+    width: 100%;
 }
 
 .top-bar-aviso strong {
@@ -45,20 +46,11 @@ body {
     color: #1a1a1a;
     transition: opacity 0.2s;
     position: absolute;
-    right: 20px; /* Fica no canto direito */
+    right: 20px;
 }
 
 .fechar-aviso:hover {
     opacity: 0.6;
-}
-
-/* Ajuste para celular: texto menor e mais espaço */
-@media (max-width: 768px) {
-    .top-bar-aviso {
-        font-size: 0.8rem;
-        padding: 10px 35px 10px 15px; /* Espaço extra na direita pro X não ficar em cima do texto */
-        text-align: left;
-    }
 }
 
 /* === CABEÇALHO === */
@@ -135,7 +127,7 @@ nav a:hover {
     transform: scale(1.05);
 }
 
-/* === VITRINE === */
+/* === VITRINE (GERAL) === */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -159,35 +151,92 @@ h2::after {
     margin: 10px auto 0;
 }
 
+/* Grid Padrão (Usado no Catálogo) */
 .vitrine-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
 }
 
-/* === CARTÃO DO PRODUTO === */
+/* === CARROSSEL DE DESTAQUES (HOME) === */
+.carrossel-destaques-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.carrossel-track {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 5px;
+    
+    /* Esconder scrollbar */
+    scrollbar-width: none; 
+}
+
+.carrossel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.carrossel-item {
+    min-width: 300px;
+    max-width: 300px;
+    flex: 0 0 auto;
+}
+
+/* Botões de Navegação do Destaque */
+.nav-destaque {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #1a1a1a;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.nav-destaque:hover {
+    background-color: #d4af37;
+    color: #1a1a1a;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.nav-destaque.prev { left: -20px; }
+.nav-destaque.next { right: -20px; }
+
+
+/* === CARTÃO DO PRODUTO (ATUALIZADO COM BORDA PRETA) === */
 .card-produto {
     background: white;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    
+    /* Sombra mais marcada */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08); 
+    
     text-align: center;
-    transition: transform 0.3s ease;
-    border: 1px solid #eee;
+    transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
+    
+    /* === AQUI ESTÁ A BORDA PRETA SUAVE === */
+    border: 1px solid rgba(0, 0, 0, 0.7);
 }
 
 .card-produto:hover {
     transform: translateY(-10px);
-    border-color: #d4af37;
-}
-
-.foto-produto {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #eee;
+    border-color: #d4af37; /* Vira dourada no hover */
+    box-shadow: 0 12px 25px rgba(212, 175, 55, 0.15);
 }
 
 h3 {
@@ -220,7 +269,72 @@ h3 {
     color: #d4af37;
 }
 
-/* === BOTÃO DESTAQUE CATÁLOGO === */
+/* === EFEITO HOVER NA FOTO DO PRODUTO (OVERLAY) === */
+.container-foto {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden; 
+    border: 1px solid #eee;
+}
+
+.container-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.overlay-detalhes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-ver-detalhes {
+    background-color: rgba(212, 175, 55, 0.9);
+    color: #1a1a1a;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.container-foto:hover img {
+    transform: scale(1.1);
+}
+
+.container-foto:hover .overlay-detalhes {
+    opacity: 1;
+}
+
+.container-foto:hover .btn-ver-detalhes {
+    transform: translateY(0);
+}
+
+.trigger-detalhe {
+    cursor: pointer;
+}
+
+
+/* === BOTÃO DESTAQUE CATÁLOGO (BANNER) === */
 .btn-catalogo-destaque {
     display: inline-flex;
     align-items: center;
@@ -262,8 +376,8 @@ footer {
     border-top: 3px solid #d4af37;
 }
 
-/* === ESTILOS DE BOTÕES GERAIS === */
-.destaque-insta, .destaque-whatsapp, .destaque-ml, .destaque-shopee, .destaque-tiktok, .destaque-elo7 {
+/* === ESTILOS DE BOTÕES GERAIS (NAVBAR) === */
+.destaque-inicio, .destaque-catalogo, .destaque-insta, .destaque-whatsapp, .destaque-ml, .destaque-shopee, .destaque-tiktok, .destaque-elo7 {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -275,7 +389,19 @@ footer {
     transition: all 0.3s;
 }
 
-/* Cores dos Botões */
+/* Botões de Navegação (Início e Catálogo) - Estilo Dourado */
+.destaque-inicio, .destaque-catalogo {
+    border: 1px solid #d4af37;
+    color: #f0f0f0 !important;
+}
+.destaque-inicio:hover, .destaque-catalogo:hover {
+    background-color: #d4af37; 
+    color: #1a1a1a !important; 
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Cores dos Marketplaces */
 .destaque-insta { border: 1px solid #E1306C; color: #ffffff !important; }
 .destaque-insta:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white !important; border-color: transparent; box-shadow: 0 0 15px rgba(225, 48, 108, 0.5); transform: translateY(-2px); }
 
@@ -288,19 +414,9 @@ footer {
 .destaque-shopee { border: 1px solid #ee4d2d; color: #ee4d2d !important; }
 .destaque-shopee:hover { background-color: #ee4d2d; color: white !important; box-shadow: 0 0 10px rgba(238, 77, 45, 0.6); transform: translateY(-2px); }
 
-/* TikTok (ATUALIZADO PARA BRANCO E PRETO) */
-.destaque-tiktok { 
-    border: 1px solid #ffffff; 
-    color: #ffffff !important; 
-}
-.destaque-tiktok:hover { 
-    background-color: #ffffff; 
-    color: #000000 !important; /* Texto Preto ao passar o mouse */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6); 
-    transform: translateY(-2px); 
-}
+.destaque-tiktok { border: 1px solid #ffffff; color: #ffffff !important; }
+.destaque-tiktok:hover { background-color: #ffffff; color: #000000 !important; box-shadow: 0 0 10px rgba(255, 255, 255, 0.6); transform: translateY(-2px); }
 
-/* Elo7 (Laranja e Branco) */
 .destaque-elo7 { border: 1px solid #FF7A00; color: #FF7A00 !important; }
 .destaque-elo7:hover { background-color: #FF7A00; color: white !important; box-shadow: 0 0 10px rgba(255, 122, 0, 0.6); transform: translateY(-2px); }
 
@@ -323,7 +439,7 @@ footer {
 .btn-filtro:hover { background-color: #f1c40f; transform: translateY(-2px); }
 .btn-filtro.ativo { background-color: #d4af37; color: white; }
 
-/* === MODAL DE COMPRA === */
+/* === MODAL DE COMPRA (PADRÃO) === */
 .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 1000; justify-content: center; align-items: center; animation: fadeIn 0.3s; }
 .modal-content { background-color: rgb(51, 51, 51); padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; text-align: center; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 2px solid #d4af37; }
 .modal-content h3 { color: #d4af37 !important; }
@@ -334,10 +450,140 @@ footer {
 .btn-modal { justify-content: center; padding: 12px; font-size: 1.1rem; }
 @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 
+/* === NOVO MODAL DE DETALHES (PREMIUM) - ESTILOS GLOBAIS === */
+.modal-large {
+    max-width: 900px; 
+    width: 95%;
+    padding: 0; 
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+}
 
-/* === AJUSTES PARA CELULAR (LAYOUT BLINDADO COM ELO7) === */
+.detalhes-grid {
+    display: flex;
+    flex-direction: row; 
+    background-color: #f9f9f9;
+}
+
+/* Foto do Modal com Carrossel */
+.detalhes-foto-container {
+    flex: 1;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    position: relative; /* Importante para as setas */
+}
+
+.detalhes-foto-container img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 8px;
+    transition: opacity 0.2s ease;
+}
+
+/* === ESTILOS DAS SETAS DO CARROSSEL (MODAL E HOME) === */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro */
+    color: #d4af37; /* Seta dourada */
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.nav-btn:hover {
+    background-color: #d4af37;
+    color: #1a1a1a;
+    transform: scale(1.1) translateY(-45%);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Classe para esconder setas se só tiver 1 foto */
+.nav-btn.hidden {
+    display: none !important;
+}
+
+/* Informações do Modal */
+.detalhes-info {
+    flex: 1;
+    padding: 40px 30px;
+    text-align: left;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.detalhes-info h3 {
+    font-size: 2rem;
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+
+.detalhe-preco {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.separador-dourado {
+    width: 50px;
+    height: 3px;
+    background-color: #d4af37;
+    margin: 20px 0;
+}
+
+.detalhes-info h4 {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.detalhes-info p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.tag-dimensao {
+    display: inline-block;
+    background: #333;
+    padding: 5px 15px;
+    border-radius: 4px;
+    border: 1px solid #d4af37;
+    color: #d4af37 !important;
+    font-weight: bold;
+}
+
+
+/* === AJUSTES PARA CELULAR (MEDIA QUERIES) === */
 @media (max-width: 768px) {
     
+    /* Barra de aviso */
+    .top-bar-aviso {
+        flex-direction: column;
+        padding: 10px 40px 10px 10px;
+        text-align: left;
+        font-size: 0.85rem;
+    }
+
+    /* Layout Geral */
     header {
         flex-direction: column;
         padding: 1rem;
@@ -347,11 +593,11 @@ footer {
 
     nav { width: 100%; }
 
+    /* Grid do Menu */
     nav ul {
         display: grid;
-        /* Mapa atualizado: TikTok e Elo7 juntos na linha 3 */
         grid-template-areas: 
-            "link1 link2"
+            "nav_btn nav_btn"  
             "ml shopee"
             "tiktok elo7"
             "instagram instagram"
@@ -362,21 +608,17 @@ footer {
         padding: 0;
     }
 
-    /* Mapeando os itens para o novo mapa */
-    nav ul li:nth-child(1) { grid-area: link1; display: flex; justify-content: center; border-bottom: 1px solid #333; padding-bottom: 8px; }
-    nav ul li:nth-child(2) { grid-area: link2; display: flex; justify-content: center; border-bottom: 1px solid #333; padding-bottom: 8px; }
+    /* Mapeando os itens */
+    nav ul li:nth-child(1) { grid-area: nav_btn; }
+    nav ul li:nth-child(2) { grid-area: ml; }       
+    nav ul li:nth-child(3) { grid-area: shopee; }   
+    nav ul li:nth-child(4) { grid-area: tiktok; }   
+    nav ul li:nth-child(5) { grid-area: elo7; } 
+    nav ul li:nth-child(6) { grid-area: instagram; } 
+    nav ul li:nth-child(7) { grid-area: contato; }   
     
-    nav ul li:nth-child(3) { grid-area: ml; }       
-    nav ul li:nth-child(4) { grid-area: shopee; }   
-    nav ul li:nth-child(5) { grid-area: tiktok; }   
-    nav ul li:nth-child(6) { grid-area: elo7; } /* Elo7 (item 6) */
-    
-    /* Instagram e Contato nos itens 7 e 8 */
-    nav ul li:nth-child(7) { grid-area: instagram; } 
-    nav ul li:nth-child(8) { grid-area: contato; }   
-    
-    /* Garante que os botões ocupem 100% da célula */
-    .destaque-ml, .destaque-shopee, .destaque-tiktok, .destaque-insta, .destaque-whatsapp, .destaque-elo7 {
+    /* Botões 100% */
+    .destaque-inicio, .destaque-catalogo, .destaque-ml, .destaque-shopee, .destaque-tiktok, .destaque-insta, .destaque-whatsapp, .destaque-elo7 {
         width: 100%; 
         justify-content: center;
         height: 45px;
@@ -387,5 +629,67 @@ footer {
     .hero { padding: 60px 20px; }
     .hero h1 { font-size: 2rem; }
 
-   
+    /* Ajustes do Modal de Detalhes */
+    .detalhes-grid {
+        flex-direction: column;
+    }
+    
+    .detalhes-foto-container {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+    }
+
+    .detalhes-foto-container img {
+        max-height: 250px;
+    }
+
+    .detalhes-info {
+        padding: 25px 20px;
+        text-align: center;
+    }
+    
+    .separador-dourado {
+        margin: 20px auto; 
+    }
+
+    /* Ajustes do Overlay no Celular (Ícone sempre visível no canto) */
+    .overlay-detalhes {
+        background-color: transparent;
+        opacity: 1; /* Sempre visível */
+        justify-content: flex-end; /* Alinha no canto */
+        align-items: flex-end;
+        padding: 10px;
+        pointer-events: none; /* Deixa clicar na imagem através dele */
+    }
+
+    .btn-ver-detalhes {
+        transform: translateY(0);
+        background-color: rgba(0, 0, 0, 0.6); /* Fundo preto para contraste */
+        color: #d4af37; /* Ícone dourado */
+        padding: 6px;
+        border-radius: 50%; /* Vira uma bolinha */
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* Esconde o texto "Ver Detalhes" no celular, mostra só o ícone */
+    .btn-ver-detalhes span {
+        display: none;
+    }
+
+    /* Esconde setas do carrossel da Home no celular */
+    .nav-destaque { display: none; }
+    
+    .carrossel-destaques-wrapper {
+        padding: 0 10px;
+    }
+    
+    .carrossel-item {
+        min-width: 260px; /* Card menor no celular */
+        max-width: 260px;
+    }
 }
