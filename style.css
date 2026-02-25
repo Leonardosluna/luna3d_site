@@ -17,8 +17,8 @@ body {
 
 /* === BARRA DE AVISO (Site em Construção) === */
 .top-bar-aviso {
-    background-color: #d4af37 !important;
-    color: #1a1a1a !important;
+    background-color: #00A8FF !important; /* Azul da Logo */
+    color: #ffffff !important;
     text-align: center;
     padding: 12px 20px;
     font-size: 0.95rem;
@@ -43,7 +43,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     line-height: 1;
-    color: #1a1a1a;
+    color: #ffffff;
     transition: opacity 0.2s;
     position: absolute;
     right: 20px;
@@ -55,13 +55,13 @@ body {
 
 /* === CABEÇALHO === */
 header {
-    background-color: #1a1a1a;
+    background-color: #0b0b2b;
     color: white;
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 3px solid #d4af37;
+    border-bottom: 3px solid #00A8FF; /* Azul da Logo */
 }
 
 .logo-img {
@@ -90,7 +90,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #d4af37;
+    color: #00A8FF; /* Azul da Logo */
 }
 
 /* === HERO (BANNER) === */
@@ -112,9 +112,9 @@ nav a:hover {
 .hero button {
     margin-top: 30px;
     padding: 12px 30px;
-    background-color: #d4af37;
+    background-color: #00A8FF; /* Azul da Logo */
     border: none;
-    color: #1a1a1a;
+    color: #ffffff;
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
@@ -123,7 +123,7 @@ nav a:hover {
 }
 
 .hero button:hover {
-    background-color: #f1c40f;
+    background-color: #33C2FF; /* Azul mais claro no Hover */
     transform: scale(1.05);
 }
 
@@ -147,7 +147,7 @@ h2::after {
     display: block;
     width: 60px;
     height: 3px;
-    background-color: #d4af37;
+    background-color: #00A8FF; /* Azul da Logo */
     margin: 10px auto 0;
 }
 
@@ -172,8 +172,6 @@ h2::after {
     overflow-x: auto;
     scroll-behavior: smooth;
     padding: 20px 5px;
-    
-    /* Esconder scrollbar */
     scrollbar-width: none; 
 }
 
@@ -193,8 +191,8 @@ h2::after {
     top: 50%;
     transform: translateY(-50%);
     background-color: #1a1a1a;
-    color: #d4af37;
-    border: 1px solid #d4af37;
+    color: #00A8FF; /* Azul da Logo */
+    border: 1px solid #00A8FF;
     border-radius: 50%;
     width: 45px;
     height: 45px;
@@ -208,8 +206,8 @@ h2::after {
 }
 
 .nav-destaque:hover {
-    background-color: #d4af37;
-    color: #1a1a1a;
+    background-color: #00A8FF;
+    color: #ffffff;
     transform: translateY(-50%) scale(1.1);
 }
 
@@ -217,26 +215,21 @@ h2::after {
 .nav-destaque.next { right: -20px; }
 
 
-/* === CARTÃO DO PRODUTO (ATUALIZADO COM BORDA PRETA) === */
+/* === CARTÃO DO PRODUTO === */
 .card-produto {
     background: white;
     padding: 25px;
     border-radius: 12px;
-    
-    /* Sombra mais marcada */
     box-shadow: 0 8px 20px rgba(0,0,0,0.08); 
-    
     text-align: center;
     transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
-    
-    /* === AQUI ESTÁ A BORDA PRETA SUAVE === */
-    border: 1px solid rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.1); 
 }
 
 .card-produto:hover {
     transform: translateY(-10px);
-    border-color: #d4af37; /* Vira dourada no hover */
-    box-shadow: 0 12px 25px rgba(212, 175, 55, 0.15);
+    border-color: #00A8FF; /* Azul da Logo */
+    box-shadow: 0 12px 25px rgba(0, 168, 255, 0.15); /* Sombra neon azulada */
 }
 
 h3 {
@@ -266,7 +259,8 @@ h3 {
 
 .btn-comprar:hover {
     background-color: #1a1a1a;
-    color: #d4af37;
+    color: #00A8FF; /* Azul da Logo */
+    border-color: #1a1a1a;
 }
 
 /* === EFEITO HOVER NA FOTO DO PRODUTO (OVERLAY) === */
@@ -304,8 +298,8 @@ h3 {
 }
 
 .btn-ver-detalhes {
-    background-color: rgba(212, 175, 55, 0.9);
-    color: #1a1a1a;
+    background-color: rgba(0, 168, 255, 0.9); /* Azul transparente */
+    color: #ffffff;
     padding: 8px 15px;
     border-radius: 20px;
     font-size: 0.9rem;
@@ -334,13 +328,14 @@ h3 {
 }
 
 
-/* === BOTÃO DESTAQUE CATÁLOGO (BANNER) === */
+/* === BOTÃO DESTAQUE CATÁLOGO (O ANEL CÓSMICO!) === */
 .btn-catalogo-destaque {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(90deg, #d4af37 0%, #f1c40f 100%);
-    color: #1a1a1a; 
+    /* Gradiente vibrante inspirado no anel arco-íris da sua logo */
+    background: linear-gradient(90deg, #00A8FF 0%, #9B5DE5 50%, #FF9900 100%);
+    color: #ffffff; 
     padding: 15px 35px;
     border-radius: 50px;
     font-size: 1.1rem;
@@ -348,17 +343,18 @@ h3 {
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 5px 15px rgba(155, 93, 229, 0.4);
     transition: all 0.3s ease;
     border: 2px solid transparent; 
 }
 
 .btn-catalogo-destaque:hover {
     background: #1a1a1a; 
-    color: #d4af37; 
-    border-color: #d4af37;
+    color: #00A8FF; 
+    border-color: #00A8FF;
     transform: translateY(-3px) scale(1.02); 
-    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+    /* Brilho neon ao passar o mouse */
+    box-shadow: 0 10px 25px rgba(0, 168, 255, 0.4);
 }
 
 .btn-catalogo-destaque:hover svg {
@@ -370,10 +366,10 @@ h3 {
 footer {
     text-align: center;
     padding: 30px;
-    background-color: #1a1a1a;
-    color: #888;
+    background-color: #0b0b2b;
+    color: #ffffff;
     margin-top: 60px;
-    border-top: 3px solid #d4af37;
+    border-top: 3px solid #00A8FF; /* Azul da Logo */
 }
 
 /* === ESTILOS DE BOTÕES GERAIS (NAVBAR) === */
@@ -389,15 +385,15 @@ footer {
     transition: all 0.3s;
 }
 
-/* Botões de Navegação (Início e Catálogo) - Estilo Dourado */
+/* Botões de Navegação (Início e Catálogo) - Estilo Azul */
 .destaque-inicio, .destaque-catalogo {
-    border: 1px solid #d4af37;
-    color: #f0f0f0 !important;
+    border: 1px solid #00A8FF;
+    color: #ffffff !important;
 }
 .destaque-inicio:hover, .destaque-catalogo:hover {
-    background-color: #d4af37; 
-    color: #1a1a1a !important; 
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+    background-color: #00A8FF; 
+    color: #ffffff !important; 
+    box-shadow: 0 0 10px rgba(0, 168, 255, 0.6);
     transform: translateY(-2px);
 }
 
@@ -435,22 +431,22 @@ footer {
 
 /* Filtros */
 .filtros-area { text-align: center; margin-bottom: 30px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-.btn-filtro { padding: 8px 20px; border: 1px solid #d4af37; background-color: transparent; color: #1a1a1a; font-weight: bold; border-radius: 20px; cursor: pointer; transition: all 0.3s; font-family: 'Montserrat', sans-serif; }
-.btn-filtro:hover { background-color: #f1c40f; transform: translateY(-2px); }
-.btn-filtro.ativo { background-color: #d4af37; color: white; }
+.btn-filtro { padding: 8px 20px; border: 1px solid #00A8FF; background-color: transparent; color: #1a1a1a; font-weight: bold; border-radius: 20px; cursor: pointer; transition: all 0.3s; font-family: 'Montserrat', sans-serif; }
+.btn-filtro:hover { background-color: #33C2FF; color: white; transform: translateY(-2px); }
+.btn-filtro.ativo { background-color: #00A8FF; color: white; }
 
 /* === MODAL DE COMPRA (PADRÃO) === */
 .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 1000; justify-content: center; align-items: center; animation: fadeIn 0.3s; }
-.modal-content { background-color: rgb(51, 51, 51); padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; text-align: center; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 2px solid #d4af37; }
-.modal-content h3 { color: #d4af37 !important; }
+.modal-content { background-color: rgb(51, 51, 51); padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; text-align: center; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 2px solid #00A8FF; }
+.modal-content h3 { color: #00A8FF !important; }
 .modal-content p { color: #ccc !important; }
 .fechar-modal { position: absolute; top: 10px; right: 15px; font-size: 28px; font-weight: bold; color: #aaa; cursor: pointer; transition: color 0.2s; }
-.fechar-modal:hover { color: #d4af37; }
+.fechar-modal:hover { color: #00A8FF; }
 .lista-botoes-modal { display: flex; flex-direction: column; gap: 15px; }
 .btn-modal { justify-content: center; padding: 12px; font-size: 1.1rem; }
 @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 
-/* === NOVO MODAL DE DETALHES (PREMIUM) - ESTILOS GLOBAIS === */
+/* === NOVO MODAL DE DETALHES (PREMIUM) === */
 .modal-large {
     max-width: 900px; 
     width: 95%;
@@ -486,13 +482,13 @@ footer {
     transition: opacity 0.2s ease;
 }
 
-/* === ESTILOS DAS SETAS DO CARROSSEL (MODAL E HOME) === */
+/* === ESTILOS DAS SETAS DO CARROSSEL (MODAL) === */
 .nav-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro */
-    color: #d4af37; /* Seta dourada */
+    color: #00A8FF; /* Seta azul da logo */
     border: none;
     border-radius: 50%;
     width: 40px;
@@ -506,8 +502,8 @@ footer {
 }
 
 .nav-btn:hover {
-    background-color: #d4af37;
-    color: #1a1a1a;
+    background-color: #00A8FF;
+    color: #ffffff;
     transform: scale(1.1) translateY(-45%);
 }
 
@@ -530,7 +526,7 @@ footer {
 
 .detalhes-info h3 {
     font-size: 2rem;
-    color: #d4af37;
+    color: #00A8FF; /* Título no Modal em Azul */
     margin-bottom: 10px;
 }
 
@@ -540,10 +536,11 @@ footer {
     color: #fff;
 }
 
+/* Mantive o nome da classe do HTML, mas mudei a cor pro novo Azul */
 .separador-dourado {
     width: 50px;
     height: 3px;
-    background-color: #d4af37;
+    background-color: #00A8FF;
     margin: 20px 0;
 }
 
@@ -566,8 +563,8 @@ footer {
     background: #333;
     padding: 5px 15px;
     border-radius: 4px;
-    border: 1px solid #d4af37;
-    color: #d4af37 !important;
+    border: 1px solid #00A8FF;
+    color: #00A8FF !important;
     font-weight: bold;
 }
 
@@ -666,7 +663,7 @@ footer {
     .btn-ver-detalhes {
         transform: translateY(0);
         background-color: rgba(0, 0, 0, 0.6); /* Fundo preto para contraste */
-        color: #d4af37; /* Ícone dourado */
+        color: #00A8FF; /* Ícone Azul */
         padding: 6px;
         border-radius: 50%; /* Vira uma bolinha */
         width: 35px;
